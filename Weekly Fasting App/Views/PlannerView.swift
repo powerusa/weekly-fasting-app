@@ -5,6 +5,10 @@ struct PlannerView: View {
     @Environment(\.modelContext) private var modelContext
     @Query(sort: \FastingPlan.weekday) private var plans: [FastingPlan]
 
+    private let durationColumns = [
+        GridItem(.adaptive(minimum: 52), spacing: 10)
+    ]
+
     var body: some View {
         NavigationStack {
             ScrollView {
@@ -62,20 +66,18 @@ struct PlannerView: View {
                     .labelsHidden()
                 }
 
-                ScrollView(.horizontal, showsIndicators: false) {
-                    HStack(spacing: 10) {
-                        ForEach(PlannerViewModel.presetDurations, id: \.self) { duration in
-                            DurationPill(
-                                title: PlannerViewModel.shortDurationLabel(for: duration),
-                                isSelected: Int(plan.durationHours) == Int(duration)
-                            ) {
-                                update(plan: plan, hours: duration)
-                            }
+                LazyVGrid(columns: durationColumns, alignment: .leading, spacing: 10) {
+                    ForEach(PlannerViewModel.presetDurations, id: \.self) { duration in
+                        DurationPill(
+                            title: PlannerViewModel.shortDurationLabel(for: duration),
+                            isSelected: Int(plan.durationHours) == Int(duration)
+                        ) {
+                            update(plan: plan, hours: duration)
                         }
+                    }
 
-                        DurationPill(title: "Custom", isSelected: !PlannerViewModel.presetDurations.contains(plan.durationHours)) {
-                            update(plan: plan, hours: plan.durationHours)
-                        }
+                    DurationPill(title: "Custom", isSelected: !PlannerViewModel.presetDurations.contains(plan.durationHours)) {
+                        update(plan: plan, hours: plan.durationHours)
                     }
                 }
 

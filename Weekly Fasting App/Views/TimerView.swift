@@ -10,6 +10,10 @@ struct TimerView: View {
     @State private var showingEditStartTime = false
     @State private var editedStartDate = Date()
 
+    private let durationColumns = [
+        GridItem(.adaptive(minimum: 52), spacing: 10)
+    ]
+
     private var activeFast: FastRecord? {
         records.first { $0.status == .active }
     }
@@ -152,20 +156,17 @@ struct TimerView: View {
                                 .foregroundStyle(.secondary)
                         }
 
-                        ScrollView(.horizontal, showsIndicators: false) {
-                            HStack(spacing: 10) {
-                                ForEach(PlannerViewModel.presetDurations, id: \.self) { hours in
-                                    DurationPill(
-                                        title: PlannerViewModel.shortDurationLabel(for: hours),
-                                        isSelected: Int(selectedHours) == Int(hours)
-                                    ) {
-                                        withAnimation(.spring(duration: 0.25)) {
-                                            selectedHours = hours
-                                        }
+                        LazyVGrid(columns: durationColumns, alignment: .leading, spacing: 10) {
+                            ForEach(PlannerViewModel.presetDurations, id: \.self) { hours in
+                                DurationPill(
+                                    title: PlannerViewModel.shortDurationLabel(for: hours),
+                                    isSelected: Int(selectedHours) == Int(hours)
+                                ) {
+                                    withAnimation(.spring(duration: 0.25)) {
+                                        selectedHours = hours
                                     }
                                 }
                             }
-                            .padding(.horizontal, 1)
                         }
 
                         Stepper(value: $selectedHours, in: 1...168, step: 1) {
