@@ -6,7 +6,8 @@ struct SettingsView: View {
     @AppStorage("appearance") private var storedAppearance = AppAppearance.system.rawValue
     @Query private var preferences: [UserPreferences]
     @State private var showingDisclaimer = false
-    @State private var showingPrivacy = false
+
+    private let privacyPolicyURL = URL(string: "https://powerusa.github.io/weekly-fasting-app/privacy-policy.html")!
 
     private var preference: UserPreferences? {
         preferences.first
@@ -90,9 +91,17 @@ struct SettingsView: View {
                     Button("Health Disclaimer") {
                         showingDisclaimer = true
                     }
-                    Button("Privacy Policy") {
-                        showingPrivacy = true
+
+                    Link(destination: privacyPolicyURL) {
+                        HStack {
+                            Label("Privacy Policy", systemImage: "lock.shield.fill")
+                            Spacer()
+                            Image(systemName: "arrow.up.forward")
+                                .font(.footnote.weight(.semibold))
+                                .foregroundStyle(.secondary)
+                        }
                     }
+
                     HStack {
                         Text("App Version")
                         Spacer()
@@ -107,9 +116,6 @@ struct SettingsView: View {
         }
         .sheet(isPresented: $showingDisclaimer) {
             InfoSheet(title: "Health Disclaimer", systemImage: "heart.text.square.fill", text: "This app is for tracking and educational purposes only. It is not medical advice. Always consult your doctor before fasting.")
-        }
-        .sheet(isPresented: $showingPrivacy) {
-            InfoSheet(title: "Privacy Policy", systemImage: "lock.shield.fill", text: "All fasting data is stored only on your device. No account is required and no personal data is collected.")
         }
     }
 
