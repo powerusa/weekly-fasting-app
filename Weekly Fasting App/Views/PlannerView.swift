@@ -6,7 +6,10 @@ struct PlannerView: View {
     @Query(sort: \FastingPlan.weekday) private var plans: [FastingPlan]
 
     private let durationColumns = [
-        GridItem(.adaptive(minimum: 52), spacing: 10)
+        GridItem(.flexible(), spacing: 10),
+        GridItem(.flexible(), spacing: 10),
+        GridItem(.flexible(), spacing: 10),
+        GridItem(.flexible(), spacing: 10)
     ]
 
     var body: some View {

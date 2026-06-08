@@ -64,11 +64,26 @@ struct DurationPill: View {
     var body: some View {
         Button(action: action) {
             Text(title)
-                .font(.subheadline.weight(.semibold))
-                .padding(.horizontal, 16)
-                .padding(.vertical, 10)
-                .background(isSelected ? Color.blue : Color.secondary.opacity(0.12), in: Capsule())
+                .font(.headline.weight(.semibold))
+                .monospacedDigit()
+                .lineLimit(1)
+                .minimumScaleFactor(0.8)
+                .frame(maxWidth: .infinity, minHeight: 46)
                 .foregroundStyle(isSelected ? .white : .primary)
+                .background {
+                    RoundedRectangle(cornerRadius: 18, style: .continuous)
+                        .fill(Color.secondary.opacity(0.1))
+
+                    if isSelected {
+                        RoundedRectangle(cornerRadius: 18, style: .continuous)
+                            .fill(LinearGradient(colors: [.blue, .purple], startPoint: .topLeading, endPoint: .bottomTrailing))
+                    }
+                }
+                .overlay {
+                    RoundedRectangle(cornerRadius: 18, style: .continuous)
+                        .stroke(.white.opacity(isSelected ? 0.22 : 0), lineWidth: 1)
+                }
+                .shadow(color: isSelected ? .blue.opacity(0.22) : .clear, radius: 10, x: 0, y: 6)
         }
         .buttonStyle(.plain)
     }

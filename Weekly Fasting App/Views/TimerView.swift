@@ -11,7 +11,10 @@ struct TimerView: View {
     @State private var editedStartDate = Date()
 
     private let durationColumns = [
-        GridItem(.adaptive(minimum: 52), spacing: 10)
+        GridItem(.flexible(), spacing: 10),
+        GridItem(.flexible(), spacing: 10),
+        GridItem(.flexible(), spacing: 10),
+        GridItem(.flexible(), spacing: 10)
     ]
 
     private var activeFast: FastRecord? {
