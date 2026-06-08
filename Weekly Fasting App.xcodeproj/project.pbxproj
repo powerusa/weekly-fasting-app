@@ -1,0 +1,453 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 60;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		10A000000000000000000001 /* WeeklyFastingApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B000000000000000000001 /* WeeklyFastingApp.swift */; };
+		10A000000000000000000002 /* FastingPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B000000000000000000002 /* FastingPlan.swift */; };
+		10A000000000000000000003 /* FastRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B000000000000000000003 /* FastRecord.swift */; };
+		10A000000000000000000004 /* UserPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B000000000000000000004 /* UserPreferences.swift */; };
+		10A000000000000000000005 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B000000000000000000005 /* NotificationService.swift */; };
+		10A000000000000000000007 /* FastingTimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B000000000000000000007 /* FastingTimerViewModel.swift */; };
+		10A000000000000000000008 /* PlannerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B000000000000000000008 /* PlannerViewModel.swift */; };
+		10A000000000000000000009 /* HistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B000000000000000000009 /* HistoryViewModel.swift */; };
+		10A000000000000000000010 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B000000000000000000010 /* RootView.swift */; };
+		10A000000000000000000011 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B000000000000000000011 /* OnboardingView.swift */; };
+		10A000000000000000000012 /* DisclaimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B000000000000000000012 /* DisclaimerView.swift */; };
+		10A000000000000000000013 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B000000000000000000013 /* MainTabView.swift */; };
+		10A000000000000000000014 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B000000000000000000014 /* HomeView.swift */; };
+		10A000000000000000000015 /* PlannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B000000000000000000015 /* PlannerView.swift */; };
+		10A000000000000000000016 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B000000000000000000016 /* TimerView.swift */; };
+		10A000000000000000000017 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B000000000000000000017 /* HistoryView.swift */; };
+		10A000000000000000000018 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B000000000000000000018 /* SettingsView.swift */; };
+		10A000000000000000000020 /* Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B000000000000000000020 /* Components.swift */; };
+		10A000000000000000000021 /* PreviewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B000000000000000000021 /* PreviewData.swift */; };
+		10A000000000000000000022 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 10B000000000000000000022 /* Assets.xcassets */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		10B000000000000000000001 /* WeeklyFastingApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyFastingApp.swift; sourceTree = "<group>"; };
+		10B000000000000000000002 /* FastingPlan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastingPlan.swift; sourceTree = "<group>"; };
+		10B000000000000000000003 /* FastRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastRecord.swift; sourceTree = "<group>"; };
+		10B000000000000000000004 /* UserPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferences.swift; sourceTree = "<group>"; };
+		10B000000000000000000005 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
+		10B000000000000000000007 /* FastingTimerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastingTimerViewModel.swift; sourceTree = "<group>"; };
+		10B000000000000000000008 /* PlannerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlannerViewModel.swift; sourceTree = "<group>"; };
+		10B000000000000000000009 /* HistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewModel.swift; sourceTree = "<group>"; };
+		10B000000000000000000010 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		10B000000000000000000011 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		10B000000000000000000012 /* DisclaimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisclaimerView.swift; sourceTree = "<group>"; };
+		10B000000000000000000013 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
+		10B000000000000000000014 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		10B000000000000000000015 /* PlannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlannerView.swift; sourceTree = "<group>"; };
+		10B000000000000000000016 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
+		10B000000000000000000017 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
+		10B000000000000000000018 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		10B000000000000000000020 /* Components.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Components.swift; sourceTree = "<group>"; };
+		10B000000000000000000021 /* PreviewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewData.swift; sourceTree = "<group>"; };
+		10B000000000000000000022 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		10B000000000000000000024 /* Weekly Fasting App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Weekly Fasting App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		10C000000000000000000001 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		10D000000000000000000001 = {
+			isa = PBXGroup;
+			children = (
+				10D000000000000000000002 /* Weekly Fasting App */,
+				10D000000000000000000008 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		10D000000000000000000002 /* Weekly Fasting App */ = {
+			isa = PBXGroup;
+			children = (
+				10B000000000000000000001 /* WeeklyFastingApp.swift */,
+				10D000000000000000000003 /* Models */,
+				10D000000000000000000004 /* Services */,
+				10D000000000000000000005 /* ViewModels */,
+				10D000000000000000000006 /* Views */,
+				10D000000000000000000007 /* Resources */,
+			);
+			path = "Weekly Fasting App";
+			sourceTree = "<group>";
+		};
+		10D000000000000000000003 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				10B000000000000000000002 /* FastingPlan.swift */,
+				10B000000000000000000003 /* FastRecord.swift */,
+				10B000000000000000000004 /* UserPreferences.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		10D000000000000000000004 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				10B000000000000000000005 /* NotificationService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		10D000000000000000000005 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				10B000000000000000000007 /* FastingTimerViewModel.swift */,
+				10B000000000000000000008 /* PlannerViewModel.swift */,
+				10B000000000000000000009 /* HistoryViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		10D000000000000000000006 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				10B000000000000000000010 /* RootView.swift */,
+				10B000000000000000000011 /* OnboardingView.swift */,
+				10B000000000000000000012 /* DisclaimerView.swift */,
+				10B000000000000000000013 /* MainTabView.swift */,
+				10B000000000000000000014 /* HomeView.swift */,
+				10B000000000000000000015 /* PlannerView.swift */,
+				10B000000000000000000016 /* TimerView.swift */,
+				10B000000000000000000017 /* HistoryView.swift */,
+				10B000000000000000000018 /* SettingsView.swift */,
+				10B000000000000000000020 /* Components.swift */,
+				10B000000000000000000021 /* PreviewData.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		10D000000000000000000007 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				10B000000000000000000022 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		10D000000000000000000008 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				10B000000000000000000024 /* Weekly Fasting App.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		10E000000000000000000001 /* Weekly Fasting App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 10I000000000000000000002 /* Build configuration list for PBXNativeTarget "Weekly Fasting App" */;
+			buildPhases = (
+				10F000000000000000000001 /* Sources */,
+				10C000000000000000000001 /* Frameworks */,
+				10G000000000000000000001 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Weekly Fasting App";
+			productName = "Weekly Fasting App";
+			productReference = 10B000000000000000000024 /* Weekly Fasting App.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		10H000000000000000000001 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1600;
+				LastUpgradeCheck = 2650;
+				TargetAttributes = {
+					10E000000000000000000001 = {
+						CreatedOnToolsVersion = 16.0;
+					};
+				};
+			};
+			buildConfigurationList = 10I000000000000000000001 /* Build configuration list for PBXProject "Weekly Fasting App" */;
+			compatibilityVersion = "Xcode 15.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 10D000000000000000000001;
+			productRefGroup = 10D000000000000000000008 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				10E000000000000000000001 /* Weekly Fasting App */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		10G000000000000000000001 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				10A000000000000000000022 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		10F000000000000000000001 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				10A000000000000000000001 /* WeeklyFastingApp.swift in Sources */,
+				10A000000000000000000002 /* FastingPlan.swift in Sources */,
+				10A000000000000000000003 /* FastRecord.swift in Sources */,
+				10A000000000000000000004 /* UserPreferences.swift in Sources */,
+				10A000000000000000000005 /* NotificationService.swift in Sources */,
+				10A000000000000000000007 /* FastingTimerViewModel.swift in Sources */,
+				10A000000000000000000008 /* PlannerViewModel.swift in Sources */,
+				10A000000000000000000009 /* HistoryViewModel.swift in Sources */,
+				10A000000000000000000010 /* RootView.swift in Sources */,
+				10A000000000000000000011 /* OnboardingView.swift in Sources */,
+				10A000000000000000000012 /* DisclaimerView.swift in Sources */,
+				10A000000000000000000013 /* MainTabView.swift in Sources */,
+				10A000000000000000000014 /* HomeView.swift in Sources */,
+				10A000000000000000000015 /* PlannerView.swift in Sources */,
+				10A000000000000000000016 /* TimerView.swift in Sources */,
+				10A000000000000000000017 /* HistoryView.swift in Sources */,
+				10A000000000000000000018 /* SettingsView.swift in Sources */,
+				10A000000000000000000020 /* Components.swift in Sources */,
+				10A000000000000000000021 /* PreviewData.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		10J000000000000000000001 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = RG6E263GKB;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		10J000000000000000000002 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = RG6E263GKB;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		10J000000000000000000003 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Weekly Fasting App/Resources/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Weekly Fasting App";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "Weekly Fasting App does not read Health data.";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIUserNotificationUsageDescription = "Weekly Fasting App sends fasting timer reminders on your device.";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.weeklyfastingapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		10J000000000000000000004 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Weekly Fasting App/Resources/Preview Content\"";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Weekly Fasting App";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "Weekly Fasting App does not read Health data.";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIUserNotificationUsageDescription = "Weekly Fasting App sends fasting timer reminders on your device.";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.weeklyfastingapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		10I000000000000000000001 /* Build configuration list for PBXProject "Weekly Fasting App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				10J000000000000000000001 /* Debug */,
+				10J000000000000000000002 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		10I000000000000000000002 /* Build configuration list for PBXNativeTarget "Weekly Fasting App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				10J000000000000000000003 /* Debug */,
+				10J000000000000000000004 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 10H000000000000000000001 /* Project object */;
+}
