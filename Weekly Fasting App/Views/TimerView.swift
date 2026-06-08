@@ -58,7 +58,11 @@ struct TimerView: View {
         }
         .onAppear {
             selectedHours = preferences.first?.defaultFastingHours ?? 16
+            HistoryViewModel.completeExpiredActiveFasts(in: records, context: modelContext)
             timer.startClock()
+        }
+        .onChange(of: timer.now) {
+            HistoryViewModel.completeExpiredActiveFasts(in: records, context: modelContext)
         }
         .onDisappear {
             timer.stopClock()

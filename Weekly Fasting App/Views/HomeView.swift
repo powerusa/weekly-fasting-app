@@ -13,7 +13,7 @@ struct HomeView: View {
     }
 
     private var weeklyCompleted: [FastRecord] {
-        HistoryViewModel.completedThisWeek(from: records)
+        HistoryViewModel.finishedThisWeek(from: records)
     }
 
     var body: some View {
@@ -37,7 +37,7 @@ struct HomeView: View {
         }
         .onAppear {
             timer.startClock()
-            completeExpiredActiveFastIfNeeded()
+            HistoryViewModel.completeExpiredActiveFasts(in: records, context: modelContext)
         }
         .onDisappear {
             timer.stopClock()
@@ -161,12 +161,5 @@ struct HomeView: View {
                 )
             )
         }
-    }
-
-    private func completeExpiredActiveFastIfNeeded() {
-        guard let activeFast, Date() >= activeFast.plannedEndDate else { return }
-        activeFast.status = .completed
-        activeFast.endedAt = activeFast.plannedEndDate
-        try? modelContext.save()
     }
 }

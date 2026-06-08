@@ -1,4 +1,5 @@
 import Foundation
+import SwiftData
 
 struct DayFastingSummary: Identifiable {
     let id = UUID()
@@ -7,19 +8,19 @@ struct DayFastingSummary: Identifiable {
 }
 
 enum HistoryViewModel {
-    static func completedThisWeek(from records: [FastRecord]) -> [FastRecord] {
+    static func finishedThisWeek(from records: [FastRecord]) -> [FastRecord] {
         let calendar = Calendar.current
         return records.filter { record in
-            record.status == .completed && calendar.isDate(record.startDate, equalTo: Date(), toGranularity: .weekOfYear)
+            isHistoryRecord(record) && calendar.isDate(record.startDate, equalTo: Date(), toGranularity: .weekOfYear)
         }
     }
 
     static func totalHoursThisWeek(from records: [FastRecord]) -> Double {
-        completedThisWeek(from: records).reduce(0) { $0 + $1.completedHours }
+        finishedThisWeek(from: records).reduce(0) { $0 + $1.completedHours }
     }
 
     static func bestStreak(from records: [FastRecord]) -> Int {
-        let completedDays = Set(records.filter { $0.status == .completed }.map {
+        let completedDays = Set(records.filter(isHistoryRecord).map {
             Calendar.current.startOfDay(for: $0.startDate)
         })
         let sortedDays = completedDays.sorted()
@@ -48,11 +49,28 @@ enum HistoryViewModel {
             guard let date = calendar.date(byAdding: .day, value: -offset, to: today) else { return nil }
             let hours = records
                 .filter { record in
-                    record.status == .completed && calendar.isDate(record.startDate, inSameDayAs: date)
+                    isHistoryRecord(record) && calendar.isDate(record.startDate, inSameDayAs: date)
                 }
                 .reduce(0) { $0 + $1.completedHours }
 
             return DayFastingSummary(date: date, hours: hours)
         }
+    }
+
+    static func completeExpiredActiveFasts(in records: [FastRecord], context: ModelContext, now: Date = Date()) {
+        let expiredRecords = records.filter { record in
+            record.status == .active && now >= record.plannedEndDate
+        }
+        guard !expiredRecords.isEmpty else { return }
+
+        expiredRecords.forEach { record in
+            record.status = .completed
+            record.endedAt = record.plannedEndDate
+        }
+        try? context.save()
+    }
+
+    private static func isHistoryRecord(_ record: FastRecord) -> Bool {
+        record.status == .completed || record.status == .endedEarly
     }
 }

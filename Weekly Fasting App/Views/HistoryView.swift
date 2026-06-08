@@ -3,10 +3,11 @@ import SwiftData
 import SwiftUI
 
 struct HistoryView: View {
+    @Environment(\.modelContext) private var modelContext
     @Query(sort: \FastRecord.startDate, order: .reverse) private var records: [FastRecord]
 
-    private var completedThisWeek: [FastRecord] {
-        HistoryViewModel.completedThisWeek(from: records)
+    private var finishedThisWeek: [FastRecord] {
+        HistoryViewModel.finishedThisWeek(from: records)
     }
 
     var body: some View {
@@ -20,17 +21,20 @@ struct HistoryView: View {
             .background(Color.appBackground)
             .navigationTitle("History")
         }
+        .onAppear {
+            HistoryViewModel.completeExpiredActiveFasts(in: records, context: modelContext)
+        }
     }
 
     private var historyContent: some View {
         VStack(spacing: 18) {
             HStack(spacing: 12) {
-                StatCard(title: "Completed", value: "\(completedThisWeek.count)", systemImage: "checkmark.circle.fill", color: .blue)
+                StatCard(title: "Finished", value: "\(finishedThisWeek.count)", systemImage: "checkmark.circle.fill", color: .blue)
                 StatCard(title: "Hours", value: "\(Int(HistoryViewModel.totalHoursThisWeek(from: records).rounded()))", systemImage: "clock.fill", color: .purple)
             }
 
             HStack(spacing: 12) {
-                StatCard(title: "This Week", value: "\(completedThisWeek.count)", systemImage: "calendar", color: .teal)
+                StatCard(title: "This Week", value: "\(finishedThisWeek.count)", systemImage: "calendar", color: .teal)
                 StatCard(title: "Best Streak", value: "\(HistoryViewModel.bestStreak(from: records))", systemImage: "flame.fill", color: .orange)
             }
 
@@ -63,20 +67,20 @@ struct HistoryView: View {
 
             PremiumCard {
                 VStack(alignment: .leading, spacing: 14) {
-                    Text("Completed Fasts This Week")
+                    Text("Fasts This Week")
                         .font(.headline)
 
-                    if completedThisWeek.isEmpty {
-                        Text("Completed fasts will appear here.")
+                    if finishedThisWeek.isEmpty {
+                        Text("Finished fasts will appear here.")
                             .foregroundStyle(.secondary)
                             .frame(maxWidth: .infinity, alignment: .leading)
                     } else {
-                        ForEach(completedThisWeek) { record in
+                        ForEach(finishedThisWeek) { record in
                             HStack {
                                 VStack(alignment: .leading, spacing: 3) {
                                     Text(record.startDate.formatted(date: .abbreviated, time: .omitted))
                                         .font(.subheadline.weight(.semibold))
-                                    Text("\(Int(record.targetHours)) hour target")
+                                    Text(record.status == .completed ? "\(Int(record.targetHours)) hour target" : "Ended early")
                                         .font(.caption)
                                         .foregroundStyle(.secondary)
                                 }
