@@ -16,6 +16,12 @@ Your fasting data remains on your device. The app does not use a server, login s
 
 If you delete the app, locally stored app data may be deleted by iOS.
 
+## Apple Health
+
+Weekly Fasting can connect with Apple Health to save and read fasting-related wellness data with your permission. Apple Health access is optional and can be enabled or disabled anytime in the Health app or iPhone Settings.
+
+This app does not use CareKit.
+
 ## Notifications
 
 Weekly Fasting App may send local notifications for fasting events, such as when a fast starts, is almost finished, or is completed.
@@ -45,4 +51,3 @@ This privacy policy may be updated if the app changes. Any updates will be poste
 ## Contact
 
 If you have questions about this privacy policy, contact the app developer through the support contact listed on the App Store.
-

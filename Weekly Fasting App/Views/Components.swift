@@ -113,6 +113,28 @@ struct StatCard: View {
     }
 }
 
+struct AppleHealthInfoSection: View {
+    var body: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            Label("Apple Health Integration", systemImage: "heart.fill")
+                .font(.headline)
+                .foregroundStyle(.primary)
+
+            Text("Weekly Fasting can connect with Apple Health to save and read fasting-related wellness data with your permission. Apple Health access is optional and can be enabled or disabled anytime in the Health app or iPhone Settings.")
+                .font(.subheadline)
+                .foregroundStyle(.secondary)
+
+            Text("This app does not use CareKit.")
+                .font(.caption)
+                .foregroundStyle(.secondary)
+        }
+        .padding()
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(.thinMaterial, in: RoundedRectangle(cornerRadius: 16, style: .continuous))
+        .accessibilityElement(children: .combine)
+    }
+}
+
 struct TimeRow: View {
     let title: String
     let value: String
