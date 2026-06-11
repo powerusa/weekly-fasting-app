@@ -18,7 +18,11 @@ If you delete the app, locally stored app data may be deleted by iOS.
 
 ## Apple Health
 
-Weekly Fasting can connect with Apple Health to save and read fasting-related wellness data with your permission. Apple Health access is optional and can be enabled or disabled anytime in the Health app or iPhone Settings.
+This app uses HealthKit to save fasting sessions and related wellness data to Apple Health when you give permission.
+
+Weekly Fasting App can save your fasting sessions and related wellness data to Apple Health. Health access is optional and only used with your permission.
+
+You can manage or revoke Apple Health permissions anytime in the Apple Health app.
 
 This app does not use CareKit.
 

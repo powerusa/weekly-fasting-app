@@ -32,6 +32,19 @@ struct OnboardingView: View {
                         .padding(.horizontal, 24)
                 }
 
+                VStack(alignment: .leading, spacing: 10) {
+                    Label("Apple Health Support", systemImage: "heart.fill")
+                        .font(.headline)
+                    Text("Optionally connect Apple Health to save fasting data to the Health app.")
+                        .font(.subheadline)
+                        .fixedSize(horizontal: false, vertical: true)
+                }
+                .foregroundStyle(.white)
+                .padding(18)
+                .frame(maxWidth: 520, alignment: .leading)
+                .background(.white.opacity(0.16), in: RoundedRectangle(cornerRadius: 20, style: .continuous))
+                .padding(.horizontal, 28)
+
                 Spacer()
 
                 Button(action: onContinue) {

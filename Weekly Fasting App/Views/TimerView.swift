@@ -6,6 +6,7 @@ struct TimerView: View {
     @Query(sort: \FastRecord.startDate, order: .reverse) private var records: [FastRecord]
     @Query private var preferences: [UserPreferences]
     @StateObject private var timer = FastingTimerViewModel()
+    @StateObject private var healthKitService = HealthKitService.shared
     @State private var selectedHours: Double = 16
     @State private var showingEditStartTime = false
     @State private var editedStartDate = Date()
@@ -109,6 +110,8 @@ struct TimerView: View {
             }
 
             VStack(spacing: 12) {
+                AppleHealthSyncNote(isConnected: healthKitService.isConnected)
+
                 GradientButton(title: "End Fast", systemImage: "checkmark.circle.fill") {
                     endFast(record)
                 }
@@ -218,6 +221,7 @@ struct TimerView: View {
         record.status = end >= record.plannedEndDate ? .completed : .endedEarly
         NotificationService.shared.cancelFastNotifications()
         try? modelContext.save()
+        Task { await healthKitService.saveFastSession(record) }
     }
 
     private func cancelFast(_ record: FastRecord) {
@@ -232,5 +236,27 @@ struct TimerView: View {
         record.startDate = editedStartDate
         record.plannedEndDate = editedStartDate.addingTimeInterval(record.targetHours * 3600)
         try? modelContext.save()
+    }
+}
+
+private struct AppleHealthSyncNote: View {
+    let isConnected: Bool
+
+    var body: some View {
+        HStack(spacing: 10) {
+            Image(systemName: "heart.fill")
+                .foregroundStyle(.red)
+            VStack(alignment: .leading, spacing: 3) {
+                Text("Apple Health sync is available when HealthKit is enabled.")
+                    .font(.subheadline.weight(.semibold))
+                Text(isConnected ? "Apple Health: Connected" : "Apple Health: Not Connected")
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+            }
+            Spacer()
+        }
+        .padding(14)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(Color.cardBackground, in: RoundedRectangle(cornerRadius: 18, style: .continuous))
     }
 }

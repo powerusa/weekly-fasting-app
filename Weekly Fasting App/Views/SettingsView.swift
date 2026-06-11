@@ -5,9 +5,14 @@ struct SettingsView: View {
     @Environment(\.modelContext) private var modelContext
     @AppStorage("appearance") private var storedAppearance = AppAppearance.system.rawValue
     @Query private var preferences: [UserPreferences]
+    @StateObject private var healthKitService = HealthKitService.shared
     @State private var showingDisclaimer = false
+    @State private var showingAppleHealthExplanation = false
 
     private let privacyPolicyURL = URL(string: "https://powerusa.github.io/weekly-fasting-app/privacy-policy.html")!
+    private var appleHealthStatusText: String {
+        healthKitService.isConnected ? "Apple Health: Connected" : "Apple Health: Not Connected"
+    }
 
     private var preference: UserPreferences? {
         preferences.first
@@ -47,10 +52,27 @@ struct SettingsView: View {
                     }
                 }
 
-                Section {
-                    AppleHealthInfoSection()
+                Section("Apple Health") {
+                    AppleHealthInfoSection(statusText: appleHealthStatusText)
                         .listRowInsets(EdgeInsets(top: 8, leading: 16, bottom: 8, trailing: 16))
                         .listRowBackground(Color.clear)
+
+                    Text("Connect Apple Health to allow Weekly Fasting to sync fasting and wellness data. You can use the app without Apple Health.")
+                        .font(.footnote)
+                        .foregroundStyle(.secondary)
+
+                    Button {
+                        showingAppleHealthExplanation = true
+                    } label: {
+                        Label("Connect Apple Health", systemImage: "heart.fill")
+                    }
+                    .disabled(!healthKitService.isAvailable)
+
+                    if !healthKitService.isAvailable {
+                        Text("Apple Health is not available on this device.")
+                            .font(.footnote)
+                            .foregroundStyle(.secondary)
+                    }
                 }
 
                 Section("Notifications") {
@@ -120,8 +142,24 @@ struct SettingsView: View {
             .scrollContentBackground(.hidden)
             .background(Color.appBackground)
         }
+        .onAppear {
+            healthKitService.refreshAuthorizationStatus()
+        }
+        .sheet(isPresented: $showingAppleHealthExplanation) {
+            AppleHealthPermissionSheet {
+                Task { await healthKitService.requestAuthorization() }
+            }
+        }
         .sheet(isPresented: $showingDisclaimer) {
             InfoSheet(title: "Health Disclaimer", systemImage: "heart.text.square.fill", text: "This app is for tracking and educational purposes only. It is not medical advice. Always consult your doctor before fasting.")
+        }
+        .alert("Apple Health", isPresented: Binding(
+            get: { healthKitService.errorMessage != nil },
+            set: { if !$0 { healthKitService.errorMessage = nil } }
+        )) {
+            Button("OK") { healthKitService.errorMessage = nil }
+        } message: {
+            Text(healthKitService.errorMessage ?? "")
         }
     }
 

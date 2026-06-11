@@ -114,24 +114,87 @@ struct StatCard: View {
 }
 
 struct AppleHealthInfoSection: View {
+    let statusText: String?
+    let showsCareKitNote: Bool
+
+    init(statusText: String? = nil, showsCareKitNote: Bool = true) {
+        self.statusText = statusText
+        self.showsCareKitNote = showsCareKitNote
+    }
+
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
             Label("Apple Health Integration", systemImage: "heart.fill")
                 .font(.headline)
                 .foregroundStyle(.primary)
 
-            Text("Weekly Fasting can connect with Apple Health to save and read fasting-related wellness data with your permission. Apple Health access is optional and can be enabled or disabled anytime in the Health app or iPhone Settings.")
+            Text("This app uses HealthKit to save fasting sessions and related wellness data to Apple Health when you give permission.")
                 .font(.subheadline)
                 .foregroundStyle(.secondary)
 
-            Text("This app does not use CareKit.")
+            if let statusText {
+                Label(statusText, systemImage: statusText.contains("Connected") ? "checkmark.circle.fill" : "xmark.circle.fill")
+                    .font(.subheadline.weight(.semibold))
+                    .foregroundStyle(statusText.contains("Connected") ? .green : .secondary)
+            }
+
+            Text("You can manage or revoke Apple Health permissions anytime in the Apple Health app.")
                 .font(.caption)
                 .foregroundStyle(.secondary)
+
+            if showsCareKitNote {
+                Text("This app does not use CareKit.")
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+            }
         }
         .padding()
         .frame(maxWidth: .infinity, alignment: .leading)
         .background(.thinMaterial, in: RoundedRectangle(cornerRadius: 16, style: .continuous))
         .accessibilityElement(children: .combine)
+    }
+}
+
+struct AppleHealthPermissionSheet: View {
+    @Environment(\.dismiss) private var dismiss
+    let onContinue: () -> Void
+
+    var body: some View {
+        NavigationStack {
+            VStack(alignment: .leading, spacing: 20) {
+                Image(systemName: "heart.text.square.fill")
+                    .font(.system(size: 54))
+                    .symbolRenderingMode(.hierarchical)
+                    .foregroundStyle(.red)
+
+                Text("Apple Health Integration")
+                    .font(.largeTitle.bold())
+                    .fixedSize(horizontal: false, vertical: true)
+
+                Text("Weekly Fasting App can save your fasting sessions and related wellness data to Apple Health. Health access is optional and only used with your permission.")
+                    .font(.title3)
+                    .foregroundStyle(.secondary)
+                    .fixedSize(horizontal: false, vertical: true)
+
+                Spacer()
+
+                GradientButton(title: "Continue to Apple Health", systemImage: "heart.fill") {
+                    dismiss()
+                    onContinue()
+                }
+            }
+            .padding(24)
+            .frame(maxWidth: 620, alignment: .leading)
+            .background(Color.appBackground)
+            .navigationTitle("Apple Health")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .cancellationAction) {
+                    Button("Cancel") { dismiss() }
+                }
+            }
+        }
+        .presentationDetents([.medium, .large])
     }
 }
 
