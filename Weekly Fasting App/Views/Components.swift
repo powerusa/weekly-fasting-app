@@ -157,7 +157,9 @@ struct AppleHealthInfoSection: View {
 
 struct AppleHealthPermissionSheet: View {
     @Environment(\.dismiss) private var dismiss
-    let onContinue: () -> Void
+    @State private var isRequesting = false
+    let isAvailable: Bool
+    let onContinue: () async -> Void
 
     var body: some View {
         NavigationStack {
@@ -176,11 +178,35 @@ struct AppleHealthPermissionSheet: View {
                     .foregroundStyle(.secondary)
                     .fixedSize(horizontal: false, vertical: true)
 
+                Text(isAvailable ? "Tap Continue to open the Apple Health permission screen." : "Apple Health is not available on this device, so no permission screen can be shown.")
+                    .font(.subheadline)
+                    .foregroundStyle(.secondary)
+                    .fixedSize(horizontal: false, vertical: true)
+
                 Spacer()
 
-                GradientButton(title: "Continue to Apple Health", systemImage: "heart.fill") {
-                    dismiss()
-                    onContinue()
+                if isRequesting {
+                    HStack(spacing: 12) {
+                        ProgressView()
+                        Text("Opening Apple Health...")
+                            .font(.headline)
+                    }
+                    .frame(maxWidth: .infinity)
+                    .padding(.vertical, 17)
+                } else {
+                    GradientButton(title: isAvailable ? "Continue to Apple Health" : "Done", systemImage: isAvailable ? "heart.fill" : "checkmark.circle.fill") {
+                        guard isAvailable else {
+                            dismiss()
+                            return
+                        }
+
+                        isRequesting = true
+                        Task {
+                            await onContinue()
+                            isRequesting = false
+                            dismiss()
+                        }
+                    }
                 }
             }
             .padding(24)
@@ -191,10 +217,12 @@ struct AppleHealthPermissionSheet: View {
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
                     Button("Cancel") { dismiss() }
+                        .disabled(isRequesting)
                 }
             }
         }
         .presentationDetents([.medium, .large])
+        .interactiveDismissDisabled(isRequesting)
     }
 }
 

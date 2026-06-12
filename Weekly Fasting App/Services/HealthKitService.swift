@@ -8,6 +8,7 @@ final class HealthKitService: ObservableObject {
     @Published private(set) var isConnected = false
     @Published private(set) var isAvailable = HKHealthStore.isHealthDataAvailable()
     @Published var errorMessage: String?
+    @Published var statusMessage: String?
 
     private let healthStore = HKHealthStore()
 
@@ -38,6 +39,7 @@ final class HealthKitService: ObservableObject {
         do {
             try await healthStore.requestAuthorization(toShare: Set([fastingSessionType]), read: Set([fastingSessionType]))
             refreshAuthorizationStatus()
+            statusMessage = isConnected ? "Apple Health is connected." : "Apple Health permission was not enabled. You can change this anytime in the Apple Health app."
         } catch {
             errorMessage = "Apple Health permission could not be completed."
             refreshAuthorizationStatus()

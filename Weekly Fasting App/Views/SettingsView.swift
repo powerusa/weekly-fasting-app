@@ -66,7 +66,6 @@ struct SettingsView: View {
                     } label: {
                         Label("Connect Apple Health", systemImage: "heart.fill")
                     }
-                    .disabled(!healthKitService.isAvailable)
 
                     if !healthKitService.isAvailable {
                         Text("Apple Health is not available on this device.")
@@ -146,8 +145,8 @@ struct SettingsView: View {
             healthKitService.refreshAuthorizationStatus()
         }
         .sheet(isPresented: $showingAppleHealthExplanation) {
-            AppleHealthPermissionSheet {
-                Task { await healthKitService.requestAuthorization() }
+            AppleHealthPermissionSheet(isAvailable: healthKitService.isAvailable) {
+                await healthKitService.requestAuthorization()
             }
         }
         .sheet(isPresented: $showingDisclaimer) {
@@ -160,6 +159,14 @@ struct SettingsView: View {
             Button("OK") { healthKitService.errorMessage = nil }
         } message: {
             Text(healthKitService.errorMessage ?? "")
+        }
+        .alert("Apple Health", isPresented: Binding(
+            get: { healthKitService.statusMessage != nil },
+            set: { if !$0 { healthKitService.statusMessage = nil } }
+        )) {
+            Button("OK") { healthKitService.statusMessage = nil }
+        } message: {
+            Text(healthKitService.statusMessage ?? "")
         }
     }
 
